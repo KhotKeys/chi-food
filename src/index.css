@@ -1,0 +1,199 @@
+/* --- Updated Color Palette for Modern Layered UI --- */
+:root {
+  --primary: #6a5fa1;
+  --secondary: #663972;
+  --accent: #a45068;
+  --background: #eb8e7f;
+  --foreground: #fff;
+  --muted: rgba(255,255,255,0.15);
+  --card-radius: 1.5rem;
+  --shadow: 0 8px 32px rgba(106,95,161,0.18);
+  --glass-blur: blur(16px);
+}
+
+body {
+  background: linear-gradient(135deg, var(--background) 0%, #fff 100%);
+  color: var(--foreground);
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  min-height: 100vh;
+}
+
+#root {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+  font-weight: 800;
+  color: var(--primary);
+  letter-spacing: -1px;
+}
+
+/* --- Glassy Navbar --- */
+#navbar {
+  position: fixed;
+  top: 1.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100vw - 3rem);
+  z-index: 100;
+  background: rgba(106,95,161,0.55);
+  box-shadow: var(--shadow);
+  border-radius: 1.5rem;
+  backdrop-filter: var(--glass-blur);
+  padding: 0.7rem 0;
+  transition: background 0.3s, box-shadow 0.3s;
+}
+#navbar .navbar-menu a {
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.1em;
+  text-decoration: none;
+  transition: color 0.2s, text-shadow 0.2s;
+  padding: 0.5em 1.2em;
+  border-radius: 1em;
+}
+#navbar .navbar-menu a:hover, #navbar .navbar-menu a:focus {
+  color: var(--accent);
+  background: rgba(255,255,255,0.08);
+  text-shadow: 0 2px 8px rgba(106,95,161,0.18);
+}
+
+#navbar .navbar-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2em;
+  cursor: pointer;
+}
+
+#navbar .navbar-menu {
+  display: flex;
+  gap: 2.2em;
+}
+
+@media (max-width: 900px) {
+  #navbar .navbar-menu {
+    gap: 1.2em;
+  }
+}
+@media (max-width: 600px) {
+  #navbar {
+    top: 0.5rem;
+    width: calc(100vw - 1rem);
+    border-radius: 1em;
+    padding: 0.5rem 0;
+  }
+  #navbar .navbar-toggle {
+    display: block;
+  }
+  #navbar .navbar-menu {
+    display: none;
+    flex-direction: column;
+    background: rgba(106,95,161,0.95);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100vw;
+    padding: 1.2em 0;
+    box-shadow: var(--shadow);
+    z-index: 101;
+    border-radius: 0 0 1.5em 1.5em;
+    backdrop-filter: var(--glass-blur);
+  }
+  #navbar .navbar-menu.open {
+    display: flex;
+  }
+  #navbar .navbar-menu a {
+    padding: 0.8em 2em;
+    font-size: 1.15em;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+}
+
+/* --- Glassmorphism Card --- */
+.card {
+  background: rgba(255,255,255,0.18);
+  border-radius: var(--card-radius);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  backdrop-filter: var(--glass-blur);
+  border: 1.5px solid rgba(106,95,161,0.10);
+  transition: transform 0.2s, box-shadow 0.2s, background 0.3s;
+}
+.card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 36px rgba(106,95,161,0.18);
+  background: rgba(255,255,255,0.28);
+}
+
+/* --- Modern Buttons --- */
+.btn, .badge {
+  background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+  color: #fff;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.2s;
+  box-shadow: 0 2px 8px rgba(106,95,161,0.10);
+  letter-spacing: 0.5px;
+}
+.btn:hover, .btn:focus {
+  background: linear-gradient(90deg, var(--accent) 0%, var(--primary) 100%);
+  box-shadow: 0 4px 16px rgba(106,95,161,0.18);
+  transform: translateY(-2px) scale(1.04);
+}
+
+/* --- Smooth Animations --- */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1.2s ease forwards;
+}
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+.slide-in {
+  animation: slideIn 0.7s cubic-bezier(0.4,0,0.2,1) both;
+}
+@keyframes slideIn {
+  from { transform: translateY(40px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* --- Utility Classes (unchanged) --- */
+.flex { display: flex; align-items: center; }
+.space-between { justify-content: space-between; }
+.space-y-2 > * + * { margin-top: 0.5rem; }
+.space-y-4 > * + * { margin-top: 1rem; }
+.space-y-6 > * + * { margin-top: 1.5rem; }
+.grid { display: grid; gap: 1.5rem; }
+.grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 900px) {
+  .grid-cols-4 { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  #root { padding: 1rem 0.25rem; }
+  .grid-cols-4, .grid-cols-2 { grid-template-columns: 1fr; }
+  .card { padding: 1rem; }
+}
+
+/* --- Responsive Images --- */
+img, .leaflet-container {
+  max-width: 100%;
+  height: auto;
+}
+
+/* --- Touch-friendly Buttons --- */
+.btn, .badge {
+  min-width: 44px;
+  min-height: 44px;
+  font-size: 1em;
+} 
